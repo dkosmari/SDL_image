@@ -1095,7 +1095,7 @@ datadir='${datarootdir}'
 sysconfdir='${prefix}/etc'
 sharedstatedir='${prefix}/com'
 localstatedir='${prefix}/var'
-runstatedir='${localstatedir}/run'
+runstatedir='/run'
 includedir='${prefix}/include'
 oldincludedir='/usr/include'
 docdir='${datarootdir}/doc/${PACKAGE_TARNAME}'
@@ -1645,7 +1645,7 @@ Fine tuning of the installation directories:
   --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
   --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
   --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
-  --runstatedir=DIR       modifiable per-process data [LOCALSTATEDIR/run]
+  --runstatedir=DIR       modifiable per-process data [/run]
   --libdir=DIR            object code libraries [EPREFIX/lib]
   --includedir=DIR        C header files [PREFIX/include]
   --oldincludedir=DIR     C header files for non-gcc [/usr/include]
@@ -13417,8 +13417,8 @@ base_libdir=`echo \${libdir} | sed 's/.*\/\(.*\)/\1/; q'`
 
 find_lib()
 {
-    gcc_bin_path=`$CC -print-search-dirs 2>/dev/null | fgrep programs: | sed 's/[^=]*=\(.*\)/\1/' | sed 's/:/ /g'`
-    gcc_lib_path=`$CC -print-search-dirs 2>/dev/null | fgrep libraries: | sed 's/[^=]*=\(.*\)/\1/' | sed 's/:/ /g'`
+    gcc_bin_path=`$CC -print-search-dirs 2>/dev/null | grep -F programs: | sed 's/[^=]*=\(.*\)/\1/' | sed 's/:/ /g'`
+    gcc_lib_path=`$CC -print-search-dirs 2>/dev/null | grep -F libraries: | sed 's/[^=]*=\(.*\)/\1/' | sed 's/:/ /g'`
     env_lib_path=`echo $LIBS $LDFLAGS $* | sed 's/-L[ ]*//g'`
     if test "$cross_compiling" = yes; then
         host_lib_path=""

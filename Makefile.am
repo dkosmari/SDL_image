@@ -66,8 +66,9 @@ EXTRA_DIST = \
 libSDL2_image_la_LDFLAGS = 	\
 	-no-undefined		\
 	-release $(LT_RELEASE)	\
-	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LT_EXTRA)
-libSDL2_image_la_LIBADD = $(IMG_LIBS)
+	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LT_EXTRA) \
+	$(IMG_LIBS)
+
 if USE_VERSION_RC
 libSDL2_image_la_DEPENDENCIES = version.o
 endif

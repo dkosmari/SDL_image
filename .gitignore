@@ -1,21 +1,25 @@
+*.la
+*.lai
+*.lo
+*.o
+*.xcworkspace
+*~
+.deps
+.DS_Store
+.libs
+aclocal.m4
 autom4te*
 config.cache
 config.log
 config.status
-configure~
-Makefile
+configure
 libtool
-.deps
-.libs
-*.lo
-*.o
-*.la
-*.lai
-.DS_Store
-xcuserdata
-*.xcworkspace
+ltmain.sh
+Makefile
+Makefile.in
 SDL2_image.pc
 showimage
+xcuserdata
 
 # for Visual C++
 .vs
